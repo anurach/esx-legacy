@@ -281,13 +281,9 @@ end)
 AddEventHandler('skinchanger:getData', function(cb)
     local components = json.decode(json.encode(Components))
 
-    for k, v in pairs(Character) do
-        for i = 1, #components, 1 do
-            if k == components[i].name then
-                components[i].value = v
-            end
-        end
-    end
+	for i=1, #components, 1 do
+		components[i].value = Character[components[i].name]
+	end
 
     cb(components, GetMaxVals())
 end)
